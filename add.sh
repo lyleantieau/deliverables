@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Adds a deliverable to the queue: creates the issue, puts it on the board, fills in fields.
-# Usage: ./add.sh "Title" --for Chris|Alessandro|Nikolaus|Brad|Lab-wide [--priority High|Medium|Low]
+# Usage: ./add.sh "Title" --for GROUP [--by "@who"] [--priority High|Medium|Low]
 #                         [--start YYYY-MM-DD] [--target YYYY-MM-DD] [--body "details"]
 set -euo pipefail
 
@@ -8,12 +8,13 @@ OWNER="lyleantieau"
 REPO="$OWNER/deliverables"
 BOARD=1
 
-TITLE="${1:?usage: ./add.sh \"Title\" --for NAME [--priority High] [--start DATE] [--target DATE] [--body TEXT]}"
+TITLE="${1:?usage: ./add.sh \"Title\" --for GROUP [--by @who] [--priority High] [--start DATE] [--target DATE] [--body TEXT]}"
 shift
-FOR="" PRIORITY="Medium" START="" TARGET="" BODY=""
+FOR="" BY="" PRIORITY="Medium" START="" TARGET="" BODY=""
 while [ $# -gt 0 ]; do
   case "$1" in
     --for) FOR="$2" ;;
+    --by) BY="$2" ;;
     --priority) PRIORITY="$2" ;;
     --start) START="$2" ;;
     --target) TARGET="$2" ;;
@@ -29,19 +30,20 @@ option() { jq -r --arg n "$1" --arg o "$2" '.fields[] | select(.name==$n) | .opt
 choices() { jq -r --arg n "$1" '[.fields[] | select(.name==$n) | .options[].name] | join(", ")' <<<"$FIELDS"; }
 
 # Check names before creating anything, so a typo doesn't leave an orphan issue.
-[ -n "$FOR" ] || { echo "--for is required: $(choices "Requested by")" >&2; exit 1; }
-[ -n "$(option "Requested by" "$FOR")" ] || { echo "--for must be one of: $(choices "Requested by")" >&2; exit 1; }
+[ -n "$FOR" ] || { echo "--for is required: $(choices Group)" >&2; exit 1; }
+[ -n "$(option Group "$FOR")" ] || { echo "--for must be one of: $(choices Group)" >&2; exit 1; }
 [ -n "$(option Priority "$PRIORITY")" ] || { echo "--priority must be one of: $(choices Priority)" >&2; exit 1; }
 
 URL=$(gh issue create --repo "$REPO" --title "$TITLE" --label deliverable \
-  --body "${BODY:-_No details yet._}"$'\n\n'"For: $FOR")
+  --body "${BODY:-_No details yet._}"$'\n\n'"For: $FOR${BY:+ ($BY)}")
 ITEM=$(gh project item-add "$BOARD" --owner "$OWNER" --url "$URL" --format json --jq .id)
 PROJECT=$(gh project view "$BOARD" --owner "$OWNER" --format json --jq .id)
 edit() { gh project item-edit --id "$ITEM" --project-id "$PROJECT" "$@" >/dev/null; }
 
 edit --field-id "$(field Status)" --single-select-option-id "$(option Status "Up next")"
 edit --field-id "$(field Priority)" --single-select-option-id "$(option Priority "$PRIORITY")"
-edit --field-id "$(field "Requested by")" --single-select-option-id "$(option "Requested by" "$FOR")"
+edit --field-id "$(field Group)" --single-select-option-id "$(option Group "$FOR")"
+[ -n "$BY" ] && edit --field-id "$(field Requester)" --text "$BY"
 [ -n "$START" ] && edit --field-id "$(field Start)" --date "$START"
 [ -n "$TARGET" ] && edit --field-id "$(field Target)" --date "$TARGET"
 

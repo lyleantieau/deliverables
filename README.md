@@ -11,7 +11,7 @@ What Lyle is working on for the lab, and when each piece is expected. The order 
 | **Waiting on others** | Paused on parts, information or a decision from someone else. |
 | **Done** | Delivered. |
 
-Each item shows who it's for (**Requested by**: Chris, Alessandro, Nikolaus, Brad, or Lab-wide for shared work), its **Priority**, and its **Start** and **Target** dates. Targets are estimates and get updated when priorities shift, so check back here instead of asking for a status update.
+Each item shows who it's for (**Group**: ARPG, Cairo, Correll, HIRO, or Lab-wide for shared work, plus the **Requester** when there is one), its **Priority**, and its **Start** and **Target** dates. Targets are estimates and get updated when priorities shift, so check back here instead of asking for a status update.
 
 ## Asking for something
 
@@ -31,7 +31,7 @@ If two requests conflict, the people who asked for them settle the order togethe
 ## Adding an item (Lyle)
 
 ```bash
-./add.sh "Rewire LE Arm wrist encoder" --for Alessandro --priority High --target 2026-11-07
+./add.sh "Rewire LE Arm wrist encoder" --for HIRO --by "@alice" --priority High --target 2026-11-07
 ```
 
-`--for` takes one of the names above. This creates the issue and puts it on the board as **Up next** with the fields filled in. Drag it to its place in the column to set its rank.
+`--for` takes one of the groups above; `--by` is optional. This creates the issue and puts it on the board as **Up next** with the fields filled in. Drag it to its place in the column to set its rank.

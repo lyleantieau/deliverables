@@ -8,7 +8,7 @@ body:
     attributes:
       value: |
         **Students:** please ask Lyle directly instead of filing here. He'll add it to the queue.
-        After submitting, set **Requested by**, **Priority**, **Start** and **Target** on the board.
+        After submitting, set **Group**, **Requester**, **Priority**, **Start** and **Target** on the board.
   - type: textarea
     id: what
     attributes:
@@ -20,7 +20,7 @@ body:
     id: for
     attributes:
       label: For
-      placeholder: "Chris, Alessandro, Nikolaus, Brad, or Lab-wide"
+      placeholder: "HIRO, @alice"
   - type: textarea
     id: notes
     attributes:
