@@ -19,8 +19,6 @@ Talk to Lyle directly. If it's taken on, it's added here with a target date. If 
 
 ## How priorities are decided
 
-> **Draft.** This is to be worked out with Chris, Alessandro, Nikolaus and Brad.
-
 1. **Hard external deadlines** first: papers, grants, demos, sponsor deliverables.
 2. **Work blocking someone else**: whatever unblocks the most people goes ahead.
 3. **Small items** (under about an hour) are batched and done between larger pieces.
