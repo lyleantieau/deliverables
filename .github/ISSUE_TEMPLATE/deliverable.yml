@@ -20,7 +20,7 @@ body:
     id: for
     attributes:
       label: For
-      placeholder: "@student, project name"
+      placeholder: "Chris, Alessandro, Nikolaus, Brad, or Lab-wide"
   - type: textarea
     id: notes
     attributes:

@@ -11,7 +11,7 @@ What Lyle is working on for the lab, and when each piece is expected. The order 
 | **Waiting on others** | Paused on parts, information or a decision from someone else. |
 | **Done** | Delivered. |
 
-Each item shows who it's for (**Requested by**), its **Priority**, and its **Start** and **Target** dates. Targets are estimates and get updated when priorities shift, so check back here instead of asking for a status update.
+Each item shows who it's for (**Requested by**: Chris, Alessandro, Nikolaus, Brad, or Lab-wide for shared work), its **Priority**, and its **Start** and **Target** dates. Targets are estimates and get updated when priorities shift, so check back here instead of asking for a status update.
 
 ## Asking for something
 
@@ -19,19 +19,19 @@ Talk to Lyle directly. If it's taken on, it's added here with a target date. If 
 
 ## How priorities are decided
 
-> **Draft.** This is to be worked out with Chris and the PhD students.
+> **Draft.** This is to be worked out with Chris, Alessandro, Nikolaus and Brad.
 
 1. **Hard external deadlines** first: papers, grants, demos, sponsor deliverables.
 2. **Work blocking someone else**: whatever unblocks the most people goes ahead.
 3. **Small items** (under about an hour) are batched and done between larger pieces.
 4. **Everything else** runs first come, first served.
 
-If two requests conflict, the people involved and Chris decide the order. The decision is reflected on the board.
+If two requests conflict, the people who asked for them settle the order together with Lyle. The decision is reflected on the board.
 
 ## Adding an item (Lyle)
 
 ```bash
-./add.sh "Rewire LE Arm wrist encoder" --for "@alice" --priority High --target 2026-11-07
+./add.sh "Rewire LE Arm wrist encoder" --for Alessandro --priority High --target 2026-11-07
 ```
 
-This creates the issue and puts it on the board as **Up next** with the fields filled in. Drag it to its place in the column to set its rank.
+`--for` takes one of the names above. This creates the issue and puts it on the board as **Up next** with the fields filled in. Drag it to its place in the column to set its rank.
