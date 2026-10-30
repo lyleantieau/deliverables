@@ -1,6 +1,6 @@
 # Open Deliverables
 
-What Lyle is working on for the lab, and when each piece is expected. The order on the **[board](https://github.com/orgs/CU-IntelligentRoboticsLab/projects/1)** is the priority order: the top of **Up next** is what gets picked up next.
+What Lyle is working on for the lab, and when each piece is expected. The order on the **[board](https://github.com/users/lyleantieau/projects/1)** is the priority order: the top of **Up next** is what gets picked up next.
 
 ## Reading the board
 

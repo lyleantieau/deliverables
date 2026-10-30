@@ -2,7 +2,7 @@ name: Deliverable
 description: Add an item to Lyle's deliverables queue (Lyle only)
 title: ""
 labels: ["deliverable"]
-projects: ["CU-IntelligentRoboticsLab/1"]
+projects: ["lyleantieau/1"]
 body:
   - type: markdown
     attributes:
